@@ -46,10 +46,10 @@ Custom
 ====
 
 | Xml | Method | Value and meaning |
-| --- |
-| app:type | setType | `type_in`:Animate the page which will be in.<br/>`type_out`:Animate the page which will be in.<br/>`type_both`:Animate both the in and out page. |
+| :----: | :----: | :----: |
+| app:type | setType | `type_in`:Animate the page which will be in.(Default value.)<br/>`type_out`:Animate the page which will be in.<br/>`type_both`:Animate both the in and out page. |
 | app:item_offset | setItemOffset | Dimension. Offset of different items. |
-| app:item_offsetFraction | setItemOffsetFraction | Fraction. Fraction to calculate offset of different items. `Fraction * Width` will be the item offset.|
+| app:item_offsetFraction | setItemOffsetFraction | Fraction. Fraction to calculate offset of different items. `Fraction * Width` will be the item offset.(Default value would be 1/6.) |
 
 To see how these attrs work , please install the sample apk.
 
