@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="MIUIViewPager">
+		<attr name="item_offsetFraction" format="fraction"/>
+		<attr name="item_offset" format="dimension"/>
+		<attr name="type" format="enum">
+			<enum name="type_in" value="0"/>
+			<enum name="type_out" value="1"/>
+			<enum name="type_both" value="2"/>
+		</attr>
+	</declare-styleable>
+</resources>

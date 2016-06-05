@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimary">#fd6440</color>
+	<color name="colorPrimaryDark">#fd6440</color>
+	<color name="colorAccent">#fd6440</color>
+	<!-- make background darker to emphasize content -->
+	<color name="windowBackground">#9e9e9e</color>
+</resources>

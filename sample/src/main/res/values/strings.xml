@@ -1,0 +1,16 @@
+<resources>
+	<string name="app_name">MIUIViewPagerDemo</string>
+	<string name="test">Test </string>
+
+	<string name="type">type</string>
+	<string name="yes">yes</string>
+	<string name="config">Config</string>
+	<string name="item_offset_fraction">itemOffsetFraction</string>
+	<string name="item_offset">itemOffset</string>
+	<string name="item_offset_tips">The attr itemOffset will takes precedence over the attr itemOffsetFraction.</string>
+
+	<string-array name="item_offset_type">
+		<item>@string/item_offset</item>
+		<item>@string/item_offset_fraction</item>
+	</string-array>
+</resources>
