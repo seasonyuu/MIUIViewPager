@@ -17,6 +17,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		miuiViewPager = (MIUIViewPager) findViewById(R.id.view_pager);
 		mTabLayout = (TabLayout) findViewById(R.id.tab);
-
+		mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 		final MiuiPagerAdapter adapter = new MiuiPagerAdapter();
 		miuiViewPager.setOffscreenPageLimit(5);
@@ -126,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	}
 
 	private class MiuiPagerAdapter extends PagerAdapter {
-		private String[] titles = new String[]{"ListView", "LinearLayout", "LinearLayout in ScrollView", "Recycler View"};
+		private String[] titles = new String[]{"ListView", "LinearLayout",
+				"LinearLayout in ScrollView", "Recycler View", "GridView"};
 		private ViewGroup[] viewGroups;
 
 		private String[] itemTexts = new String[30];
@@ -153,6 +155,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 			RecyclerView rv = (RecyclerView) viewGroups[3].findViewById(R.id.rv);
 			rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 			rv.setAdapter(new SimpleRVAdapter(MainActivity.this));
+
+			viewGroups[4] = new GridView(MainActivity.this);
+			((GridView)viewGroups[4]).setNumColumns(3);
+			((GridView)viewGroups[4]).setAdapter(
+					new ArrayAdapter<>(MainActivity.this,
+							R.layout.simple_item, R.id.text1, itemTexts));
 		}
 
 		public ViewGroup[] getViewGroups() {

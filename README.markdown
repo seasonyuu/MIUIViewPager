@@ -55,7 +55,7 @@ To see how these attrs work , please install the sample apk.
 
 TODO
 ====
-* add GridView support
+* add RecyclerView with GridLayoutManager support
 
 License
 ====

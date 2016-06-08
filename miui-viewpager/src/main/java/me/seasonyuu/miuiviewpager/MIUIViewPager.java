@@ -142,8 +142,10 @@ public class MIUIViewPager extends ViewPager {
 	private void performAnimate(ViewGroup viewGroup, float positionOffset, @MovePosition int movePosition) {
 		if (viewGroup == null)
 			return;
-		if(viewGroup instanceof GridView)
+		if (viewGroup instanceof GridView) {
+			performGridView((GridView) viewGroup, positionOffset, movePosition);
 			return;
+		}
 		int start = getFirstVisiblePosition(viewGroup);
 		int end = getLastVisiblePosition(viewGroup);
 
@@ -166,8 +168,43 @@ public class MIUIViewPager extends ViewPager {
 				if (left > 0)
 					left = 0;
 			}
-			childView.layout(left, childView.getTop(), childView.getWidth() + left, childView.getBottom());
+			childView.layout(left, childView.getTop(), childView.getMeasuredWidth() + left, childView.getBottom());
 		}
+	}
+
+	private void performGridView(GridView gridView, float positionOffset, @MovePosition int movePosition) {
+		int columns = gridView.getNumColumns();
+		if (columns == -1)
+			return;
+
+		int start = getFirstVisiblePosition(gridView);
+		int end = getLastVisiblePosition(gridView);
+
+		int gridItemOffset = itemOffset / 3;
+
+		int childWidth = gridView.getWidth() / columns;
+
+		for (int i = start; i <= end; i += columns) {
+			for (int j = i; j < i + columns && j <= end; j++) {
+				View childView = gridView.getChildAt(j);
+
+				int left = (j - i) * childWidth;
+				if (movePosition == MOVE_TO_LEFT) {
+					left += (int) (gridItemOffset * (i - start) - positionOffset * (end - start) * gridItemOffset
+							+ (1 - positionOffset) * gridItemOffset);
+					if (left < (j - i) * childWidth)
+						left = (j - i) * childWidth;
+				} else {
+					left += (int) (-gridItemOffset * (i - start) - positionOffset * (end - start) * gridItemOffset
+							- positionOffset * gridItemOffset)
+							+ gridItemOffset * (end - start);
+					if (left > (j - i) * childWidth)
+						left = (j - i) * childWidth;
+				}
+				childView.layout(left, childView.getTop(), childWidth + left, childView.getBottom());
+			}
+		}
+
 	}
 
 	private int getFirstVisiblePosition(ViewGroup viewGroup) {
