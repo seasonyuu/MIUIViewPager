@@ -53,9 +53,15 @@ Custom
 
 To see how these attrs work , please install the sample apk.
 
+Notice
+======
+* GridView is not recommended, although I had made a support for GridView. It took too much consumption of GPU rendering.
+* Only the LinearLayoutManager of GridView is supported, if you use other LayoutManager, please don't attach to ViewPager.
+
 TODO
 ====
-* add RecyclerView with GridLayoutManager support
+* add Chinese README
+* upload to jCenter
 
 License
 ====
