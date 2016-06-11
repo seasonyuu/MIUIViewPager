@@ -1,5 +1,7 @@
-MIUI ViewPager
+MIUIViewPager
 ==============
+[中文版](./README_zh.markdown)
+
 A ViewPager performs item animations while scrolling.
 
 Idea from MIUI Rom.
@@ -56,11 +58,10 @@ To see how these attrs work , please install the sample apk.
 Notice
 ======
 * GridView is not recommended, although I had made a support for GridView. It took too much consumption of GPU rendering.
-* Only the LinearLayoutManager of GridView is supported, if you use other LayoutManager, please don't attach to ViewPager.
+* Only the LinearLayoutManager of RecyclerView is supported, if you use other LayoutManager, please don't attach to ViewPager.
 
 TODO
 ====
-* add Chinese README
 * upload to jCenter
 
 License
