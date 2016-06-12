@@ -16,32 +16,39 @@ Sample
 
 ![](./library_sample.gif)
 
+引用
+=======
+在 build.gradle 中加入
+```groovy
+    compile 'me.seasonyuu.android:miui-viewpager:1.0.0'
+```
+
 使用
 =====
 1. 像添加普通的 ViewPager 一样在 xml 中添加 MIUIViewPager
 
-	```xml
-<me.seasonyuu.miuiviewpager.MIUIViewPager
-	android:id="@+id/view_pager"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"/>
-```
+    ```xml
+    <me.seasonyuu.miuiviewpager.MIUIViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    ```
 
 2.  在 `onCreate` 方法 (或者 `fragment` 的 `onCreateView` 方法), 把想要进行内容动画的 `ViewGroup` 放置到 `SparseArray` 数组中，通过 `setPagerAttach` 连接到 `MIUIViewPager`。
 
-	```java
-miuiViewPager.setPagerAttach(new MIUIPagerAttachable() {
-	@Override
-	public SparseArray<ViewGroup> attachViewGroup() {
-			ViewGroup[] viewGroups = adapter.getViewGroups(); // Just get your ViewGroup in ViewPager
-			SparseArray<ViewGroup> attach = new SparseArray<>();
-			for (int i = 0; i < viewGroups.length; i++) {
-					attach.put(i, viewGroups[i]);
-				}
-				return attach;
-			}
-});
-```
+    ```java
+    miuiViewPager.setPagerAttach(new MIUIPagerAttachable() {
+        @Override
+        public SparseArray<ViewGroup> attachViewGroup() {
+                ViewGroup[] viewGroups = adapter.getViewGroups(); // Just get your ViewGroup in ViewPager
+                SparseArray<ViewGroup> attach = new SparseArray<>();
+                for (int i = 0; i < viewGroups.length; i++) {
+                        attach.put(i, viewGroups[i]);
+                    }
+                    return attach;
+                }
+    });
+    ```
 
 自定义
 ====

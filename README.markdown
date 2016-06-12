@@ -16,33 +16,40 @@ My Library sample
 
 ![](./library_sample.gif)
 
+Include
+=======
+Add this in your build.gradle
+```groovy
+    compile 'me.seasonyuu.android:miui-viewpager:1.0.0'
+```
+
 Usage
 =====
 1. Add this MIUIViewPager as normal ViewPager
 
-	```xml
-<me.seasonyuu.miuiviewpager.MIUIViewPager
-	android:id="@+id/view_pager"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"/>
-```
+    ```xml
+    <me.seasonyuu.miuiviewpager.MIUIViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    ```
 
 2.  In your `onCreate` method (or `onCreateView` for a fragment), attach the
      ViewGroup you want to animate to the `ViewPager` by using a `SparseArray`.
 
-	```java
-miuiViewPager.setPagerAttach(new MIUIPagerAttachable() {
-	@Override
-	public SparseArray<ViewGroup> attachViewGroup() {
-			ViewGroup[] viewGroups = adapter.getViewGroups(); // Just get your ViewGroup in ViewPager
-			SparseArray<ViewGroup> attach = new SparseArray<>();
-			for (int i = 0; i < viewGroups.length; i++) {
-					attach.put(i, viewGroups[i]);
-				}
-				return attach;
-			}
-});
-```
+    ```java
+    miuiViewPager.setPagerAttach(new MIUIPagerAttachable() {
+        @Override
+        public SparseArray<ViewGroup> attachViewGroup() {
+                ViewGroup[] viewGroups = adapter.getViewGroups(); // Just get your ViewGroup in ViewPager
+                SparseArray<ViewGroup> attach = new SparseArray<>();
+                for (int i = 0; i < viewGroups.length; i++) {
+                        attach.put(i, viewGroups[i]);
+                    }
+                    return attach;
+                }
+    });
+    ```
 
 Custom
 ====
@@ -59,10 +66,6 @@ Notice
 ======
 * GridView is not recommended, although I had made a support for GridView. It took too much consumption of GPU rendering.
 * Only the LinearLayoutManager of RecyclerView is supported, if you use other LayoutManager, please don't attach to ViewPager.
-
-TODO
-====
-* upload to jCenter
 
 License
 ====
